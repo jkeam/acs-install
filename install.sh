@@ -15,14 +15,17 @@ echo 'Installing central, waiting for 10 minutes...'
 sleep 600
 echo ''
 
-echo 'Now generate the Cluster Init Bundle and download the Kubernetes secrets file'
-echo 'Then run something like: oc create -f ./bundle-cluster-init-secrets.yaml -n stackrox'
-echo ''
+echo 'Now generate the Cluster Init Bundle and download the Kubernetes secrets file...'
 echo 'URL: '
 oc -n stackrox get route central -o jsonpath="{.status.ingress[0].host}"
 echo ''
+echo 'Username: '
+echo 'admin'
+echo ''
 echo 'Password: '
 oc -n stackrox get secret central-htpasswd -o go-template='{{index .data "password" | base64decode}}'
+echo ''
+echo 'Then run something like: oc create -f ./bundle-cluster-init-secrets.yaml -n stackrox'
 echo ''
 read -n 1 -s -r -p "Press enter when done"
 
