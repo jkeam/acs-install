@@ -9,6 +9,7 @@ Just run my script.
 
 ```shell
 ./install.sh
+# ./uninstall.sh  # this is how to uninstall
 ```
 
 ## Web Console
